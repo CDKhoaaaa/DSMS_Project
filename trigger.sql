@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-﻿
-/* TRIGGER */
+USE SchoolManagementSystem;
+GO
+
+/* -----------------------------------------TRIGGER------------------------------------------- */
 
 /* Không thêm học sinh vào lớp có phòng học đã đầy.
    Bảng: class, classroom, class_student*/
-
-
 CREATE TRIGGER TG_status_classroom ON class_student
 AFTER INSERT, UPDATE
 AS
@@ -34,9 +33,3 @@ IF (@nos + (SELECT COUNT(*) FROM inserted)) > @capacity
 		return
     END
 END;
-
-=======
-/* TRIGGER */
-USE SchoolManagementSystem;
-GO
->>>>>>> 69ec63bb4fab530ffafc58264ea0dc4d00bbeedd
