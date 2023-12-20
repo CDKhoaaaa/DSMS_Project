@@ -1,1 +1,3 @@
 /* TRIGGER */
+USE SchoolManagementSystem;
+GO
