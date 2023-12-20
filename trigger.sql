@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 /* TRIGGER */
 
@@ -34,3 +35,8 @@ IF (@nos + (SELECT COUNT(*) FROM inserted)) > @capacity
     END
 END;
 
+=======
+/* TRIGGER */
+USE SchoolManagementSystem;
+GO
+>>>>>>> 69ec63bb4fab530ffafc58264ea0dc4d00bbeedd
