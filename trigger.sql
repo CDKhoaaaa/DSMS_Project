@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-﻿
+﻿USE SchoolManagementSystem;
+GO
 /* TRIGGER */
 
 /* Không thêm học sinh vào lớp có phòng học đã đầy.
@@ -34,9 +34,24 @@ IF (@nos + (SELECT COUNT(*) FROM inserted)) > @capacity
 		return
     END
 END;
-
-=======
-/* TRIGGER */
-USE SchoolManagementSystem;
 GO
->>>>>>> 69ec63bb4fab530ffafc58264ea0dc4d00bbeedd
+
+
+
+/* Cập nhật thông tin update_at khi có bất cứ thông tin nào được cập nhất trong bảng student*/
+
+
+CREATE TRIGGER TG_update_at_student ON student
+AFTER UPDATE
+AS
+BEGIN
+	UPDATE student
+	SET update_at = getdate()
+	FROM student st join inserted i on i.student_id = st.student_id
+END
+
+select * from student
+
+UPDATE student
+SET is_active = 1
+where student_id = 2
