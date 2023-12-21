@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-﻿USE SchoolManagementSystem;
+USE SchoolManagementSystem;
 GO
-/* TRIGGER */
-=======
 USE SchoolManagementSystem;
 GO
 
 /* -----------------------------------------TRIGGER------------------------------------------- */
->>>>>>> 90471ea74a0d1ff73e12c0234a39ce0baf4b7d9d
 
 /* Không thêm học sinh vào lớp có phòng học đã đầy.
    Bảng: class, classroom, class_student*/
@@ -39,13 +35,9 @@ IF (@nos + (SELECT COUNT(*) FROM inserted)) > @capacity
 		return
     END
 END;
-<<<<<<< HEAD
 GO
 
-
-
 /* Cập nhật thông tin update_at khi có bất cứ thông tin nào được cập nhất trong bảng student*/
-
 
 CREATE TRIGGER TG_update_at_student ON student
 AFTER UPDATE
@@ -61,5 +53,4 @@ select * from student
 UPDATE student
 SET is_active = 1
 where student_id = 2
-=======
->>>>>>> 90471ea74a0d1ff73e12c0234a39ce0baf4b7d9d
+
