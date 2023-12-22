@@ -21,8 +21,8 @@ CREATE TABLE student(
 	lname nvarchar(25) not null,
 	gender  nvarchar(6) not null,
 	dob DATE not null,
-	email varchar(75) CHECK (email LIKE '%_@__%.__%'),
-	phone varchar(12) check(len(phone) between 10 and 12),
+	email varchar(75) check (email LIKE '%_@__%.__%'),
+	phone varchar(12) check(len(phone) between 10 and 12) unique,
 	school_id int not null,
 	stage int not null,
 	section char(2) not null,
@@ -34,21 +34,21 @@ CREATE TABLE student(
 GO
 
 CREATE TABLE guardian(
-	parent_id int primary key,
-	parent_code varchar(12) not null,
+	guardian_id int primary key,
+	guardian_code varchar(12) not null,
 	fname nvarchar(25) not null,
 	lname nvarchar(25) not null,
-	email varchar(75) CHECK (email LIKE '%_@__%.__%'),
-	phone varchar(12) check(len(phone) between 10 and 12),
+	email varchar(75) check (email LIKE '%_@__%.__%'),
+	phone varchar(12) check(len(phone) between 10 and 12) unique,
 	created_at datetime default(getdate()),
 	update_at datetime null
 );
 GO
 
 CREATE TABLE student_guardian(
-	student_parent_id int primary key,
+	student_guardian_id int primary key,
 	student_id int not null,
-	parent_id int not null,
+	guardian_id int not null,
 	relationship nvarchar(10) not null
 );
 GO
@@ -82,8 +82,8 @@ CREATE TABLE teacher(
 	lname nvarchar(25) not null,
 	gender smallint not null,
 	dob date not null,
-	email varchar(75) CHECK (email LIKE '%_@__%.__%'),
-	phone varchar(12) check(len(phone) between 10 and 12),
+	email varchar(75) check (email LIKE '%_@__%.__%'),
+	phone varchar(12) check(len(phone) between 10 and 12) unique,
 	is_active bit not null,
 	join_date date not null,
 	working_days smallint not null,
@@ -111,11 +111,21 @@ CREATE TABLE class_student(
 );
 GO
 
-ALTER TABLE student_parent
-ADD CONSTRAINT sp_parent_fk FOREIGN KEY(parent_id) REFERENCES parent(parent_id);
+/* CREATE TABLE user_account(
+    user_id INT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    password_salt VARCHAR(50) NOT NULL,
+    user_type VARCHAR(20) NOT NULL,
+    created_at DATETIME DEFAULT(GETDATE()),
+    update_at DATETIME NULL
+) */
+
+ALTER TABLE student_guardian
+ADD CONSTRAINT sp_guardian_fk FOREIGN KEY(guardian_id) REFERENCES guardian(guardian_id);
 GO
 
-ALTER TABLE student_parent
+ALTER TABLE student_guardian
 ADD CONSTRAINT sp_student_fk FOREIGN KEY(student_id) REFERENCES student(student_id);
 GO
 
