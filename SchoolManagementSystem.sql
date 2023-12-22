@@ -1,4 +1,4 @@
-﻿CREATE DATABASE SchoolManagementSystem;
+CREATE DATABASE SchoolManagementSystem;
 GO
 USE SchoolManagementSystem;
 GO
@@ -84,6 +84,7 @@ CREATE TABLE teacher(
 	dob date not null,
 	email varchar(75) check (email LIKE '%_@__%.__%'),
 	phone varchar(12) check(len(phone) between 10 and 12) unique,
+	nos tinyint not null,
 	is_active bit not null,
 	join_date date not null,
 	working_days smallint not null,
@@ -110,16 +111,6 @@ CREATE TABLE class_student(
 	student_id int not null
 );
 GO
-
-/* CREATE TABLE user_account(
-    user_id INT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    password_salt VARCHAR(50) NOT NULL,
-    user_type VARCHAR(20) NOT NULL,
-    created_at DATETIME DEFAULT(GETDATE()),
-    update_at DATETIME NULL
-) */
 
 ALTER TABLE student_guardian
 ADD CONSTRAINT sp_guardian_fk FOREIGN KEY(guardian_id) REFERENCES guardian(guardian_id);
