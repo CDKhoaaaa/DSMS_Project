@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-/* TRIGGER */
-=======
 USE SchoolManagementSystem;
 GO
->>>>>>> 657768a497078347fe88ca318acdf24eb049ad24
-USE SchoolManagementSystem;
-GO
-
 /* -----------------------------------------TRIGGER------------------------------------------- */
 
 /* Không thêm học sinh vào lớp có phòng học đã đầy.
@@ -42,12 +35,7 @@ END;
 GO
 
 /* Cập nhật thông tin update_at khi có bất cứ thông tin nào được cập nhất trong bảng student*/
-<<<<<<< HEAD
-CREATE TRIGGER TG_update_at_student ON dbo.student
-=======
-
 CREATE TRIGGER TG_update_at_student ON student
->>>>>>> 657768a497078347fe88ca318acdf24eb049ad24
 AFTER UPDATE
 AS
 BEGIN
@@ -56,23 +44,3 @@ BEGIN
 	FROM student st join inserted i on i.student_id = st.student_id
 END;
 GO
-
-
-CREATE TRIGGER TG_update_at_student ON teacher
-AFTER UPDATE
-AS
-BEGIN
-	UPDATE teacher
-	SET update_at = getdate()
-	FROM teacher st join inserted i on i.student_id = st.student_id
-END
-
-<<<<<<< HEAD
-=======
-select * from student
-
-UPDATE student
-SET is_active = 1
-where student_id = 2
-
->>>>>>> 657768a497078347fe88ca318acdf24eb049ad24
