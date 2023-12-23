@@ -1,6 +1,52 @@
 ﻿USE SchoolManagementSystem;
 GO
 
+/*Nhập mã lớp, mã phòng học, cho biết số lượng học sinh trong lớp đó có phù hợp để vào phòng học (capacity) đó không (không lấy học sinh nghỉ học)
+  Bảng: 
+*/
+
+CREATE PROCEDURE SP_Fit_Classroom
+@class_id int,
+@class_room int
+AS
+BEGIN
+-- Lấy ra tổng số lượng học sinh trong cùng 1 lớp, không lấy học sinh nghỉ học
+DECLARE @total_students int, @capacity int, @class_name nvarchar(50)
+SELECT @total_students = count(tt.student_id)
+FROM (SELECT student_id FROM student WHERE is_active = 1 ) as tt left join class_student cs on cs.student_id = tt.student_id
+WHERE @class_id = class_id
+
+-- Lấy ra tổng số lượng ghế trong cùng lớp học
+SELECT @capacity = capacity
+FROM classroom
+WHERE @class_room = classroom_id
+
+-- Lấy ra tên lớp
+SELECT @class_name = class_name
+FROM class
+WHERE @class_id = class_id
+
+IF @capacity >= @total_students
+	BEGIN
+		PRINT CONCAT(N'Lớp ',@class_name, N' phù hợp để học tại phòng số ', @class_room)
+	END
+ELSE
+	BEGIN
+		PRINT CONCAT(N'Lớp ', @class_name, N' không phù hợp để học tại phòng số ', @class_room)
+	END
+END;
+GO
+sp_helptext SP_Fit_Classroom;
+GO
+
+/* Test Procedure 
+execute SP_Fit_Classroom 1,1;
+GO
+
+execute SP_Fit_Classroom 1,2;
+GO
+*/
+
 
 /* Nhập vào mã giáo viên. Cho biết giáo viên đó đang dạy môn nào tại lớp nào ở phòng nào 
    Liên kết 4 bảng: teacher, subject, class, classroom
