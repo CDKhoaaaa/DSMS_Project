@@ -2,7 +2,7 @@
 GO
 
 /*Nhập mã lớp, mã phòng học, cho biết số lượng học sinh trong lớp đó có phù hợp để vào phòng học (capacity) đó không (không lấy học sinh nghỉ học)
-  Bảng: 
+  Bảng: student, class, classroom, class_student
 */
 
 CREATE PROCEDURE SP_Fit_Classroom
