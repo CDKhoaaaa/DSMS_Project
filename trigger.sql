@@ -34,6 +34,7 @@ IF (@nos + (SELECT COUNT(*) FROM inserted)) > @capacity
 END;
 GO
 
+<<<<<<< HEAD
 /*Không cho phép thêm giáo viên vào một lớp nếu giao viên đó đang inactive*/
 CREATE TRIGGER TG_isactive ON class
 FOR INSERT, UPDATE
@@ -55,6 +56,9 @@ END;
 
 
 /* Cập nhật thông tin update_at khi có bất cứ thông tin nào được cập nhật trong bảng student*/
+=======
+/* Cập nhật thông tin update_at khi có bất cứ thông tin nào được cập nhất trong bảng student*/
+>>>>>>> c0a150341bea7de8ad143c9ebce9fc012a39fdba
 CREATE TRIGGER TG_update_at_student ON student
 AFTER UPDATE
 AS
@@ -77,6 +81,7 @@ SELECT @student_id = student_id FROM inserted
 		END
 END;
 GO
+<<<<<<< HEAD
 
 
 /* Cập nhật thông tin update_at khi có bất cứ thông tin nào được cập nhật trong bảng teacher*/
@@ -130,3 +135,5 @@ GO
 
 
 
+=======
+>>>>>>> c0a150341bea7de8ad143c9ebce9fc012a39fdba

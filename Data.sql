@@ -1,8 +1,9 @@
-﻿USE SchoolManagementSystem;
+USE SchoolManagementSystem;
 GO
 -- Insert data into school table
 INSERT INTO school (school_id, school_title, level_count, is_active)
 VALUES
+<<<<<<< HEAD
 (1, 'Primary School', 6, 1),
 (2, 'Secondary School', 4, 1),
 (3, 'High School', 3, 1),
@@ -13,6 +14,11 @@ VALUES
 (8, 'Charter School', 3, 1),
 (9, 'Magnet School', 4, 1),
 (10, 'Art School', 2, 1);
+=======
+(1, 'High School 1', 3, 1, GETDATE(), NULL),
+(2, 'Middle School 2', 4, 1, GETDATE(), NULL),
+(3, 'Primary School 3', 6, 0, GETDATE(), NULL);
+>>>>>>> c0a150341bea7de8ad143c9ebce9fc012a39fdba
 
 -- Insert data into student table
 INSERT INTO student (student_id, student_code, fname, lname, gender, dob, email, phone, school_id, stage, section, is_active, join_date)
@@ -90,6 +96,7 @@ VALUES
 (9, 40, 'Library', 'Library Room I'),
 (10, 20, 'Art Room', 'Art Room J');
 
+<<<<<<< HEAD
 -- Insert data into teacher table
 INSERT INTO teacher (teacher_id, teacher_code, fname, lname, gender, dob, email, phone, is_active, join_date, working_days)
 VALUES
@@ -103,6 +110,14 @@ VALUES
 (8, 'T008', 'Mrs. Jessica', 'Garcia', 2, '1984-04-14', 'jessica.g@example.com', '6667778888', 1, '2022-02-20', 5),
 (9, 'T009', 'Mr. Daniel', 'Rodriguez', 1, '1977-08-05', 'daniel.r@example.com', '9990001111', 1, '2022-02-05', 4),
 (10, 'T010', 'Mrs. Sophia', 'Smith', 2, '1981-06-12', 'sophia.s@example.com', '1234567890', 1, '2022-03-01', 5);
+=======
+-- Insert data into the 'teacher' table
+INSERT INTO teacher (teacher_id, teacher_code, fname, lname, gender, dob, email, phone, nos, is_active, join_date, working_days, created_at, update_at)
+VALUES
+(1, 'T001', 'Mr.', 'Anderson', 1, '1975-05-10', 'mr.anderson@email.com', '9998887777', 3, 1, '2020-03-15', 5, GETDATE(), NULL),
+(2, 'T002', 'Mrs.', 'Brown', 2, '1980-08-22', 'mrs.brown@email.com', '6665554444', 4, 1, '2019-07-01', 4, GETDATE(), NULL),
+(3, 'T003', 'Dr.', 'Smith', 1, '1985-11-30', 'dr.smith@email.com', '3332221111', 2, 1, '2021-02-20', 3, GETDATE(), NULL);
+>>>>>>> c0a150341bea7de8ad143c9ebce9fc012a39fdba
 
 -- Insert data into class table
 INSERT INTO class (class_id, class_name, subject_id, teacher_id, classroom_id, section)

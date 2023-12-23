@@ -1,4 +1,4 @@
-﻿CREATE DATABASE SchoolManagementSystem;
+CREATE DATABASE SchoolManagementSystem;
 GO
 USE SchoolManagementSystem;
 GO
@@ -83,7 +83,12 @@ CREATE TABLE teacher(
 	gender smallint not null,
 	dob date not null,
 	email varchar(75) check (email LIKE '%_@__%.__%'),
+<<<<<<< HEAD
 	phone varchar(12) check (LEN(phone) BETWEEN 10 AND 12 AND ISNUMERIC(phone) = 1) unique,
+=======
+	phone varchar(12) check(len(phone) between 10 and 12) unique,
+	nos tinyint not null,
+>>>>>>> c0a150341bea7de8ad143c9ebce9fc012a39fdba
 	is_active bit not null,
 	join_date date not null,
 	working_days smallint not null,
