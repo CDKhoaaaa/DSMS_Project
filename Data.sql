@@ -3,7 +3,6 @@ GO
 -- Insert data into school table
 INSERT INTO school (school_id, school_title, level_count, is_active)
 VALUES
-<<<<<<< HEAD
 (1, 'Primary School', 6, 1),
 (2, 'Secondary School', 4, 1),
 (3, 'High School', 3, 1),
@@ -14,11 +13,6 @@ VALUES
 (8, 'Charter School', 3, 1),
 (9, 'Magnet School', 4, 1),
 (10, 'Art School', 2, 1);
-=======
-(1, 'High School 1', 3, 1, GETDATE(), NULL),
-(2, 'Middle School 2', 4, 1, GETDATE(), NULL),
-(3, 'Primary School 3', 6, 0, GETDATE(), NULL);
->>>>>>> c0a150341bea7de8ad143c9ebce9fc012a39fdba
 
 -- Insert data into student table
 INSERT INTO student (student_id, student_code, fname, lname, gender, dob, email, phone, school_id, stage, section, is_active, join_date)
@@ -96,7 +90,7 @@ VALUES
 (9, 40, 'Library', 'Library Room I'),
 (10, 20, 'Art Room', 'Art Room J');
 
-<<<<<<< HEAD
+
 -- Insert data into teacher table
 INSERT INTO teacher (teacher_id, teacher_code, fname, lname, gender, dob, email, phone, is_active, join_date, working_days)
 VALUES
