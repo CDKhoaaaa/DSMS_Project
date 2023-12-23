@@ -57,7 +57,7 @@ AS
 BEGIN
 SELECT CONCAT(t.fname, ' ', t.lname) AS Full_name, s.title, c.class_name, cr.classroom_id, cr.room_type
 FROM subjects s JOIN class c ON s.subject_id = c.subject_id
-			    LEFT JOIN teacher t ON t.teacher_id = c.teacher_id
+		LEFT JOIN teacher t ON t.teacher_id = c.teacher_id
                 LEFT JOIN classroom cr ON cr.classroom_id = c.classroom_id
 WHERE @teacher_id = t.teacher_id
 END;
